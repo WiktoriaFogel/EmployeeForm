@@ -16,7 +16,9 @@ const useStyles= makeStyles({
 
 export default function DropdownMenu(props) {
     const {name, label, value, onChange, options} = props
-    const [selectedItem, setSelectedItem] = useState([]);
+    //const [selectedItem, setSelectedItem] = useState([]);
+
+    const preparedOptions = [{}, ...options]
 
     // const SearchPage = (props) => {
     //     const [input, setInput] = useState('');
@@ -30,7 +32,7 @@ export default function DropdownMenu(props) {
     //     setInput(input);
     //     setOptions(filtered);
     // }}
-
+    //console.log(name, selectedItem);
     return(
             <Autocomplete
                 multiple
@@ -38,17 +40,20 @@ export default function DropdownMenu(props) {
                 id="checkboxes"
                 options={options}
                 disableCloseOnSelect
-                onChange={(e, item) => {
-                    setSelectedItem(item);
+                onChange={(e, items) => {
+                    //setSelectedItem(item);
+                    items.includes()
+                    onChange(options);
+                    onChange(items);
                 }}
                 getOptionLabel={option => option.name}
                 renderOption={(option, state) => {
-                    const selectItemIndex = selectedItem.findIndex(
-                        item => item.name.toLowerCase() === "zaznacz wszystko"
-                    );
-                    if (selectItemIndex > -1) {
-                        state.selected = true;
-                    }
+                    // const selectItemIndex = selectedItem.findIndex(
+                    //     item => item.name.toLowerCase() === "zaznacz wszystko"
+                    // );
+                    // if (selectItemIndex > -1) {
+                    //     state.selected = true;
+                    // }
                     return (
                         <React.Fragment>
                             <Checkbox

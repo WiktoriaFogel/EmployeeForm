@@ -1,6 +1,6 @@
 
 export const getEmployeeCollection = () =>([
-            {id: 0, name: 'Zaznacz wszystko', job:null, locations: null, condition: null},
+            // {id: 0, name: 'Zaznacz wszystko', job:null, locations: null, condition: null},
             {id: 1, name: 'Adam Nowak', job:1, locations:[1,4,9], condition:1},
             {id: 2, name: 'Robert Dudek', job:1, locations:[11,6,12], condition:2},
             {id: 3, name: 'Anna Kwiatkowska', job:2, locations:[3,7,8], condition:3},
