@@ -1,0 +1,54 @@
+
+body {
+  margin: 0;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f2f2f2;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.testClass{
+  border: 3px solid red;
+}
+
+.textCenter{
+  text-align: center;
+}
+
+.formCard{
+  max-width: 550px;
+  min-height: 680px;
+  margin-left: 320px;
+}
+
+.formContainer{
+  margin-top: 30px;
+}
+
+.formTitle{
+  color:black;
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+.form{
+
+}
+
+.datePicker{
+  margin-top: 30px;
+  margin-left: 60px;
+  text-align: left;
+}
+
+.formButton{
+  margin-top: 70px;
+  margin-left: 290px;
+}
