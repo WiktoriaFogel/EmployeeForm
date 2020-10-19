@@ -14,10 +14,6 @@ code {
     monospace;
 }
 
-.testClass{
-  border: 3px solid red;
-}
-
 .textCenter{
   text-align: center;
 }
@@ -36,10 +32,6 @@ code {
   color:black;
   font-size: 20px;
   padding-top: 20px;
-}
-
-.form{
-
 }
 
 .datePicker{

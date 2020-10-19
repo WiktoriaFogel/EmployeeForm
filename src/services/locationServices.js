@@ -1,6 +1,5 @@
 
 export const getEmployeeCollection = () =>([
-            // {id: 0, name: 'Zaznacz wszystko', job:null, locations: null, condition: null},
             {id: 1, name: 'Adam Nowak', job:1, locations:[1,4,9], condition:1},
             {id: 2, name: 'Robert Dudek', job:1, locations:[11,6,12], condition:2},
             {id: 3, name: 'Anna Kwiatkowska', job:2, locations:[3,7,8], condition:3},
@@ -30,7 +29,6 @@ export const getEmployeeCollection = () =>([
 )
 
 export const getLocationCollection = () =>([
-        {id: 0, name: 'Zaznacz wszystko'},
         {id: 1, name: 'Arkady'},
         {id: 2, name: 'Magnolia'},
         {id: 3, name: 'Grunwald'},
@@ -47,7 +45,6 @@ export const getLocationCollection = () =>([
 )
 
 export const getJobsCollection = () =>([
-            {id: 0, name: 'Zaznacz wszystko'},
             {id: 1, name: 'Kucharz'},
             {id: 2, name: 'Kelner'},
             {id: 3, name: 'Piekarz'},
@@ -58,7 +55,6 @@ export const getJobsCollection = () =>([
 )
 
 export const getConditionsCollection = () =>([
-            {id: 0, name: 'Zaznacz wszystko'},
             {id: 1, name: 'Umowa o pracę'},
             {id: 2, name: 'Umowa zlecenie'},
             {id: 3, name: 'Umowa o dzieło'},

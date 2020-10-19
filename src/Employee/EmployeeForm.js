@@ -1,10 +1,9 @@
-import React, {useState, useEffect, useMemo} from "react";
+import React, {useState, useMemo} from "react";
 import Card from "@material-ui/core/Card";
 import Container from '@material-ui/core/Container';
 import FormGroup from '@material-ui/core/FormGroup';
 import DropdownMenu from "../components/DropdownMenu";
 import DatePicker from "../components/DatePicker";
-import {useForm, Form} from "../components/useForm";
 import  '../styles/index.css'
 import * as locationService from "../services/locationServices"
 import FormButton from "../components/FormButton";
@@ -20,12 +19,6 @@ const initialValues = {
 
 export default function EmployeeForm() {
 
-    const {
-        values,
-        setValues,
-        handleInputChange
-    }=useForm(initialValues);
-
     const [locations, setLocations] = useState(initialValues.locations);
     const [jobs, setJobs] = useState(initialValues.jobs);
     const [conditions, setConditions] = useState(initialValues.conditions);
@@ -35,24 +28,22 @@ export default function EmployeeForm() {
     const employeesOptions = useMemo(() => {
         return locationService
             .getEmployeeCollection()
-            .filter(employeeEntity => locations === [] ? true : locations.some(location => employeeEntity.locations.includes(location)))
-            .filter(employeeEntity => jobs === [] ? true : jobs.some(job => employeeEntity.jobs.includes(job)))
-            .filter(employeeEntity => conditions === [] ? true : conditions.some(condition => employeeEntity.conditions.includes(condition)))
+            .filter(employeeEntity => locations.length === 0 ? true : locations.some(({ id }) => employeeEntity.locations.includes(id)))
+            .filter(employeeEntity => jobs.length === 0? true : jobs.some(({ id }) => id === employeeEntity.job))
+            .filter(employeeEntity => conditions.length === 0 ? true : conditions.some(({ id }) => id === employeeEntity.condition))
     },[locations, jobs, conditions]);
 
-
     return(
-        <Form>
         <Container className="formContainer">
             <Card className="formCard">
                 <h3 className="formTitle">Wybierz pracowników</h3>
-                <FormGroup className="form">
+                <FormGroup>
 
                     <DatePicker
                         name="startDate"
                         label="Data"
                         value={startDate}
-                        onChange={handleInputChange}/>
+                        onChange={({ target: { value }}) => setStartDate(value)}/>
 
                     <DropdownMenu
                         name="locations"
@@ -78,19 +69,18 @@ export default function EmployeeForm() {
                     <DropdownMenu
                         name="employees"
                         label="Pracownicy"
-                        value={values.employees}
-                        onChange={locationService.getLocationCollection()}
+                        value={employees}
+                        onChange={(item) => setEmployees(item)}
                         options={employeesOptions}/>
 
                         <div className="formButton">
                         <FormButton
                             type="submit"
-                            text="Wyświetl"/>
+                            text="Wyświetl"
+                            onClick={console.log({startDate, locations, jobs, conditions, employees})}/>
                         </div>
-
                 </FormGroup>
             </Card>
         </Container>
-        </Form>
     )
 }
