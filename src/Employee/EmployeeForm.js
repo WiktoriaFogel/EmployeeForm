@@ -31,6 +31,10 @@ export default function EmployeeForm() {
             .filter(employeeEntity => locations.length === 0 ? true : locations.some(({ id }) => employeeEntity.locations.includes(id)))
             .filter(employeeEntity => jobs.length === 0? true : jobs.some(({ id }) => id === employeeEntity.job))
             .filter(employeeEntity => conditions.length === 0 ? true : conditions.some(({ id }) => id === employeeEntity.condition))
+            // trochę niefortunne te 3 filtry, oznacza to w najgorszym wypadku iterowanie 3 razy po tym samym zbiorze. Najlepiej takie rzeczy robić za jedną iteracją, albo 
+            // skorzystać z .reduce
+
+            //memoizacja jest jakimś wyjściem jeśli chodzi o komponenty funkcyjne i metody - ale zdecydowanie lepiej jest takie metody wywalać na zewnątrz
     },[locations, jobs, conditions]);
 
     return(
@@ -44,7 +48,9 @@ export default function EmployeeForm() {
                         label="Data"
                         value={startDate}
                         onChange={({ target: { value }}) => setStartDate(value)}/>
-
+                    {/*
+                        Trochę nie podoba mi się takie hardcodowanie komponentów. Preferowane jest podejście funkcyjne i generowanie komponentów dynamicznie, np mapując 
+                     */}
                     <DropdownMenu
                         name="locations"
                         label="Lokalizacje"
